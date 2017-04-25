@@ -1,0 +1,63 @@
+<h2>Demo Form</h2>
+<h4>3. Form NgModel</h4>
+<p>{{productName}}</p>
+<form [formGroup]="myForm"
+    (ngSubmit)="onSubmit(myForm.value)">
+  <div class="form-group">
+    <label for="productInput">Product Name</label>
+    <input 
+        type="text" 
+        id="productInput" 
+        placeholder="Product Name" 
+        name="product" 
+        class="form-control" 
+        [formControl]="myForm.get('productName')"
+        [(ngModel)]="productName">
+     </div>
+  <button  type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<hr/>
+<h4>2. Form Builder</h4>
+<form [formGroup]="myForm"
+    (ngSubmit)="onSubmit(myForm.value)">
+  <div class="form-group" [ngClass]="{'has-error':!myForm.controls['sku'].valid && myForm.controls['sku'].touched}">
+    <label for="skuInput">SKU</label>
+    <input 
+        type="text" 
+        id="skuInput" 
+        placeholder="SKU" 
+        name="sku" 
+        class="form-control" 
+        [formControl]="myForm.controls['sku']">
+    <div *ngIf="!myForm.controls['sku'].valid && myForm.controls['sku'].touched" class="label label-warning">sku invalid</div>
+    <div *ngIf="myForm.controls['sku'].hasError('required')" class="label label-error">SKU is required</div>
+  </div>
+  <button  type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<hr/>
+<h4>1</h4>
+<form #f="ngForm"
+    (ngSubmit)="onSubmit(f.value)">
+  <div class="form-group">
+    <label for="skuInput">SKU</label>
+    <input 
+        type="text" 
+        id="skuInput" 
+        placeholder="SKU" 
+        name="sku" 
+        class="form-control" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="passInput">PASS</label>
+    <input 
+        type="text" 
+        id="passInput" 
+        placeholder="pass" 
+        name="pass" 
+        class="form-control" ngModel>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+

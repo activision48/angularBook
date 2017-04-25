@@ -1,0 +1,15 @@
+<div class="thumbnail">
+    <product-img
+        [product]="product">
+    </product-img>
+    <div class="caption">
+        <h3>{{product.name}}</h3>
+        <product-department
+            [product]="product">
+        </product-department>
+        <product-price
+            [price]="product.price">
+        </product-price>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+    </div>
+</div>
